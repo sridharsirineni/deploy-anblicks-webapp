@@ -12,10 +12,10 @@
       state: absent
     with_fileglob:
       - "/opt/tomcat/webapps/webapp*"
-    - name: Deploy War File
+  - name: Deploy War File
     copy:
-       src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
-       dest: /opt/tomcat/webapps/webapp.war
+      src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
+      dest: /opt/tomcat/webapps/webapp.war
   - name: Start and enable Tomcat service
     systemd:
       name: tomcat
