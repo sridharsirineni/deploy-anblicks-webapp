@@ -6,6 +6,8 @@
   remote_user: ansible
 
   tasks:
+  - name: Clean artifact path
+    shell: rm -rf /opt/tomcat/webapps/webapp*  
   - name: Deploy War File
     copy:
        src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
