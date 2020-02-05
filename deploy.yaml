@@ -6,11 +6,10 @@
   remote_user: ansible
 
   tasks:
-    - name: Empty remote directory
-      synchronize:
-        dest: /opt/tomcat/webapps/web*
-        delete: yes
-        recursive: yes
+    - file: path=/opt/tomcat/webapps/webapp state=absent
+    - file: path=/opt/tomcat/webapps/webapp state=directory
+    - file: path=/opt/tomcat/webapps/webapp.war state=absent
+    - file: path=/opt/tomcat/webapps/webapp.war state=file
     - name: Deploy War File
       copy:
         src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
