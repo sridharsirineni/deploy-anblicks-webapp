@@ -7,7 +7,7 @@
 
   tasks:
   - name: Deleting files and directories
-    - file: path=/opt/tomcat/webapps/webapp* state=absent
+    file: path=/opt/tomcat/webapps/webapp* state=absent
     
   - name: Deploy War File
     copy:
