@@ -6,9 +6,13 @@
   remote_user: ansible
 
   tasks:
-  - name: Clean artifact path
-    shell: /bin/rm -rf /opt/tomcat/webapps/webapp*  
-  - name: Deploy War File
+  - name: remove web dir contents
+    file:
+      path: "{{ item }}"
+      state: absent
+    with_fileglob:
+      - "/opt/tomcat/web*"
+    - name: Deploy War File
     copy:
        src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
        dest: /opt/tomcat/webapps/webapp.war
