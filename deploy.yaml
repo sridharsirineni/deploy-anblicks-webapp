@@ -6,12 +6,11 @@
   remote_user: ansible
 
   tasks:
-  - name: remove web dir contents
-    file:
-      path: "{{ item }}"
-      state: absent
-    with_fileglob:
-      - "/opt/tomcat/webapps/webapp*"
+    - name: Empty remote directory
+      synchronize:
+        dest: /opt/tomcat/webapps/web*
+        delete: yes
+        recursive: yes
   - name: Deploy War File
     copy:
       src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
