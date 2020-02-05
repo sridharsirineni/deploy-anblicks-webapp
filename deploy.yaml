@@ -10,13 +10,13 @@
     - file: path=/opt/tomcat/webapps/webapp state=directory
     - file: path=/opt/tomcat/webapps/webapp.war state=absent
     - file: path=/opt/tomcat/webapps/webapp.war state=file
-    - name: Deploy War File
-      copy:
-        src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
-        dest: /opt/tomcat/webapps/webapp.war
-    - name: Start and enable Tomcat service
-      systemd:
-        name: tomcat
-        state: started
-        enabled: true
-        daemon_reload: true       
+  - name: Deploy War File
+    copy:
+      src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
+      dest: /opt/tomcat/webapps/webapp.war
+  - name: Start and enable Tomcat service
+    systemd:
+      name: tomcat
+      state: started
+      enabled: true
+      daemon_reload: true       
