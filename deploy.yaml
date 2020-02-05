@@ -1,0 +1,18 @@
+---
+- hosts: all
+
+  become: yes
+  become_method: sudo
+  remote_user: ansible
+
+  tasks:
+  - name: Deploy War File
+    copy:
+       src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
+       dest: /opt/tomcat/webapps/webapp.war
+  - name: Start and enable Tomcat service
+    systemd:
+      name: tomcat
+      state: started
+      enabled: true
+      daemon_reload: true       
