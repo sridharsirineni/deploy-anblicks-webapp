@@ -6,10 +6,9 @@
   remote_user: ansible
 
   tasks:
-    - file: path=/opt/tomcat/webapps/webapp state=absent
-    - file: path=/opt/tomcat/webapps/webapp state=directory
-    - file: path=/opt/tomcat/webapps/webapp.war state=absent
-    - file: path=/opt/tomcat/webapps/webapp.war state=file
+  - name: Deleting files and directories
+    - file: path=/opt/tomcat/webapps/webapp* state=absent
+    
   - name: Deploy War File
     copy:
       src: /home/ansible/Jenkins_Slave/workspace/DeployWarOnTomcat/webapp.war
