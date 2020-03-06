@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+  - name: download the artifacts from nexus
+    get_url:
+	  url: <ipaddress>:8081/sdagh.war
+	  dest: /home/<username>
+  - name: deployment
+    copy:
+	  src: /home/<username>/sah.war
+	  dest: /etc/tomcat/webapps
+	  mode: u+rw,g-wr,o-rwx
+	  
