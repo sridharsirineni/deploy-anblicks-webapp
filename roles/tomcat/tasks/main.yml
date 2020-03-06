@@ -1,6 +1,6 @@
 ---
 - name: Install Java 1.8
-  yum: name=apt install openjdk-8-jre-headless state=present
+  yum: name=openjdk-8-jre-headless state=present
 
 - name: add group "tomcat"
   group: name=tomcat
